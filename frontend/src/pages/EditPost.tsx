@@ -47,7 +47,7 @@ const EditPost: React.FC = () => {
     if (image) formData.append("image", image);
 
     try {
-      await axios.put(`http://localhost:5000/api/posts/${id}`, formData, {
+      await axios.put(`${API_URL}/api/posts/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
