@@ -18,7 +18,7 @@ const CreatePost: React.FC = () => {
   const [category, setCategory] = useState("General");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
-
+ const API_URL = import.meta.env.VITE_API_URL; 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -42,7 +42,7 @@ const CreatePost: React.FC = () => {
       formData.append("category", category);
       if (image) formData.append("image", image);
 
-      await axios.post("http://localhost:5000/api/posts", formData, {
+      await axios.post(`${API_URL}/posts`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

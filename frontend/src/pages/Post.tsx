@@ -6,11 +6,11 @@ const Post: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [post, setPost] = useState<PostType | null>(null);
     const [loading, setLoading] = useState(true);
-
+    const API_URL = import.meta.env.VITE_API_URL; 
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/posts/${id}`);
+                const res = await fetch(`${API_URL}/posts/${id}`);
                 const data = await res.json();
                 setPost(data);
             } catch (err) {

@@ -18,12 +18,12 @@ const EditPost: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   const token = localStorage.getItem("token");
-
+   const API_URL = import.meta.env.VITE_API_URL; 
   // Fetch existing post
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
+        const res = await axios.get(`${API_URL}/posts/${id}`);
         setTitle(res.data.title);
         setContent(res.data.content);
         setCategory(res.data.category || "General");
