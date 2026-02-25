@@ -42,7 +42,7 @@ const CreatePost: React.FC = () => {
       formData.append("category", category);
       if (image) formData.append("image", image);
 
-      await axios.post(`${API_URL}/posts`, formData, {
+      await axios.post(`${API_URL}/api/posts`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

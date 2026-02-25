@@ -15,7 +15,7 @@ const Home: React.FC = () => {
 
   const { user, token } = useAuth();
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/posts";
+  const API_URL = import.meta.env.VITE_API_URL+"/api/posts" || "http://localhost:5000/api/posts";
   // Fetch posts
   const fetchPosts = async () => {
     try {

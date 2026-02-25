@@ -23,7 +23,7 @@ const EditPost: React.FC = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`${API_URL}/posts/${id}`);
+        const res = await axios.get(`${API_URL}/api/posts/${id}`);
         setTitle(res.data.title);
         setContent(res.data.content);
         setCategory(res.data.category || "General");

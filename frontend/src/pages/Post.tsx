@@ -10,7 +10,7 @@ const Post: React.FC = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const res = await fetch(`${API_URL}/posts/${id}`);
+                const res = await fetch(`${API_URL}/api/posts/${id}`);
                 const data = await res.json();
                 setPost(data);
             } catch (err) {
