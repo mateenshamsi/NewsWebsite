@@ -4,10 +4,26 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
+const allowedOrigins = [
+  "http://localhost:5173", // local dev
+  "https://news-website-xi-flax.vercel.app", // main production
+];
+
+// Allow any Vercel preview URLs starting with "news-website-"
 app.use(cors({
-  origin: "https://news-website-b1999irmw-mateenshamsis-projects.vercel.app",
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // allow non-browser requests
+    if (
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/news-website-.*\.vercel\.app$/.test(origin)
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true, 
+  credentials: true,
 }));
 app.use(express.json());
 
